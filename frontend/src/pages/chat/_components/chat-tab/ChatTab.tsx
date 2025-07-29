@@ -19,6 +19,8 @@ const ChatTab = () => {
       content: currentMessage.trim(),
     };
 
+    console.log("Sending message:", newMessage);
+
     setCurrentMessage("");
   };
 
@@ -28,16 +30,16 @@ const ChatTab = () => {
         <div className="mt-auto">
           {messages.map((message) => (
             <div key={message.timestamp}>
-              <MessageItem
-                message={message}
-                key={message.id}
-              />
+              <MessageItem message={message} key={message.id} />
             </div>
           ))}
         </div>
       </div>
       <div className="p-[20px] px-[10px]">
-        <form onSubmit={(e) => handleMessageSend(e)} className="flex gap-[10px]">
+        <form
+          onSubmit={(e) => handleMessageSend(e)}
+          className="flex gap-[10px]"
+        >
           <input
             type="text"
             placeholder={`Message ${currentRecipient?.name || ""}`}

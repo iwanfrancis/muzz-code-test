@@ -19,7 +19,7 @@ type MessagesState = {
   createMessage: (message: MessageInput) => void;
 };
 
-const useMessagesStore = create<MessagesState>()((set, get) => ({
+const useMessagesStore = create<MessagesState>()((set) => ({
   messages: [],
   createMessage: (message: MessageInput) =>
     set((state) => {
