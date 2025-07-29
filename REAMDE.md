@@ -50,4 +50,10 @@ Without any tests in place I had no way to programatically check that I hadn't b
 
 I wasn't totally sure at this point exactly how many changes I'd have time to make and so didn't want to risk writing tests and then having to rewrite after reworking things.
 
-If this were a larger scale project I would **absolutely** consider boulstering the test infrastructure as a top priority **before** making siginificant structural changes to the codebase.
+If this were a larger scale project I would **absolutely** consider boulstering the test infrastructure as a top priority **before** making significant structural changes to the codebase.
+
+### 5. Code formatter
+
+Another low hanging fruit. A code formatter ensures code consistency and readability as the project scales. It is opinionated, which removes the decision making time from formatting decisions.
+
+I installed prettier, configured it in the package.json and also added the eslint plugin to ensure that there are no conflicting rules. I ran the formatter on all files to make sure that existing code was made consistent.

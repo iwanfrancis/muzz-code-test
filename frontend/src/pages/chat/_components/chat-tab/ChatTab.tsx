@@ -1,28 +1,28 @@
-import { useState } from "react";
-import useMessagesStore from "@/store/messages.store.ts";
-import useUserStore from "@/store/user.store.ts";
-import MessageItem from "./_components/message/MessageItem.tsx";
+import { useState } from 'react'
+import useMessagesStore from '@/store/messages.store.ts'
+import useUserStore from '@/store/user.store.ts'
+import MessageItem from './_components/message/MessageItem.tsx'
 
 const ChatTab = () => {
-  const [currentMessage, setCurrentMessage] = useState("");
-  const currentUser = useUserStore((state) => state.currentUser);
-  const currentRecipient = useUserStore((state) => state.currentRecipient);
-  const messages = useMessagesStore((state) => state.messages);
+  const [currentMessage, setCurrentMessage] = useState('')
+  const currentUser = useUserStore((state) => state.currentUser)
+  const currentRecipient = useUserStore((state) => state.currentRecipient)
+  const messages = useMessagesStore((state) => state.messages)
 
   const handleMessageSend = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!currentRecipient || !currentMessage.trim()) return;
+    e.preventDefault()
+    if (!currentRecipient || !currentMessage.trim()) return
 
     const newMessage = {
       senderId: currentUser.id,
       recipientId: currentRecipient.id,
       content: currentMessage.trim(),
-    };
+    }
 
-    console.log("Sending message:", newMessage);
+    console.log('Sending message:', newMessage)
 
-    setCurrentMessage("");
-  };
+    setCurrentMessage('')
+  }
 
   return (
     <div className="flex-1 flex flex-col">
@@ -42,7 +42,7 @@ const ChatTab = () => {
         >
           <input
             type="text"
-            placeholder={`Message ${currentRecipient?.name || ""}`}
+            placeholder={`Message ${currentRecipient?.name || ''}`}
             className="flex-1 rounded-full border-[8px] border-[#cfcfcf] px-[12px] py-[8px]"
             value={currentMessage}
             onChange={(e) => setCurrentMessage(e.target.value)}
@@ -50,7 +50,7 @@ const ChatTab = () => {
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ChatTab;
+export default ChatTab

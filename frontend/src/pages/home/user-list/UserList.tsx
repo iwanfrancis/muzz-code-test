@@ -1,37 +1,35 @@
-import UserCard from "@/components/user-card/UserCard.tsx";
-import Button from "@/components/button/Button.tsx";
-import { useQuery } from "@tanstack/react-query";
-import useUserStore, { type User } from "@/store/user.store.ts";
-import usePageStore from "@/store/page.store.ts";
+import UserCard from '@/components/user-card/UserCard.tsx'
+import Button from '@/components/button/Button.tsx'
+import { useQuery } from '@tanstack/react-query'
+import useUserStore, { type User } from '@/store/user.store.ts'
+import usePageStore from '@/store/page.store.ts'
 
 const UserList = () => {
-  const currentUser = useUserStore((state) => state.currentUser);
-  const setCurrentUser = useUserStore((state) => state.setCurrentUser);
-  const setCurrentRecipient = useUserStore(
-    (state) => state.setCurrentRecipient
-  );
-  const setCurrentPage = usePageStore((state) => state.setCurrentPage);
+  const currentUser = useUserStore((state) => state.currentUser)
+  const setCurrentUser = useUserStore((state) => state.setCurrentUser)
+  const setCurrentRecipient = useUserStore((state) => state.setCurrentRecipient)
+  const setCurrentPage = usePageStore((state) => state.setCurrentPage)
 
   const { data: users } = useQuery<User[]>({
-    queryKey: ["users"],
-    queryFn: async () => fetch("/api/user/all.json").then((res) => res.json()),
-  });
+    queryKey: ['users'],
+    queryFn: async () => fetch('/api/user/all.json').then((res) => res.json()),
+  })
 
   const switchUser = (userId: number) => {
-    const user = users?.find((user) => user.id === userId);
+    const user = users?.find((user) => user.id === userId)
     if (user) {
-      setCurrentUser(user);
-      setCurrentRecipient(null);
+      setCurrentUser(user)
+      setCurrentRecipient(null)
     }
-  };
+  }
 
   const messageUser = (userId: number) => {
-    const user = users?.find((user) => user.id === userId);
+    const user = users?.find((user) => user.id === userId)
     if (user) {
-      setCurrentRecipient(user);
-      setCurrentPage("chat");
+      setCurrentRecipient(user)
+      setCurrentPage('chat')
     }
-  };
+  }
 
   return (
     <div className="flex flex-col md:flex-row gap-8">
@@ -46,7 +44,7 @@ const UserList = () => {
                   onClick={() => switchUser(user.id)}
                   disabled={user.id === currentUser.id}
                 >
-                  {user.id === currentUser.id ? "Current User" : "Switch to"}
+                  {user.id === currentUser.id ? 'Current User' : 'Switch to'}
                 </Button>
               </div>
             </div>
@@ -73,7 +71,7 @@ const UserList = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default UserList;
+export default UserList

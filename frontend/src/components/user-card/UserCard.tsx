@@ -1,4 +1,4 @@
-import type { User } from "@/store/user.store.ts";
+import type { User } from '@/store/user.store.ts'
 
 const UserCard = ({ user }: { user: User }) => {
   return (
@@ -10,7 +10,7 @@ const UserCard = ({ user }: { user: User }) => {
       />
       <div className="font-semibold">{user.name}</div>
     </div>
-  );
-};
+  )
+}
 
-export default UserCard;
+export default UserCard

@@ -1,23 +1,23 @@
-import { create } from "zustand";
+import { create } from 'zustand'
 
 export type Message = {
-  id: number;
-  senderId: number;
-  recipientId: number;
-  content: string;
-  timestamp: string;
-};
+  id: number
+  senderId: number
+  recipientId: number
+  content: string
+  timestamp: string
+}
 
 export type MessageInput = {
-  senderId: number;
-  recipientId: number;
-  content: string;
-};
+  senderId: number
+  recipientId: number
+  content: string
+}
 
 type MessagesState = {
-  messages: Message[];
-  createMessage: (message: MessageInput) => void;
-};
+  messages: Message[]
+  createMessage: (message: MessageInput) => void
+}
 
 const useMessagesStore = create<MessagesState>()((set) => ({
   messages: [],
@@ -29,9 +29,9 @@ const useMessagesStore = create<MessagesState>()((set) => ({
         recipientId: message.recipientId,
         content: message.content,
         timestamp: new Date().toISOString(),
-      };
-      return { messages: [...state.messages, newMessage] };
+      }
+      return { messages: [...state.messages, newMessage] }
     }),
-}));
+}))
 
-export default useMessagesStore;
+export default useMessagesStore
