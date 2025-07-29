@@ -35,7 +35,7 @@ const ChatTab = () => {
           ))}
         </div>
       </div>
-      <div className="p-[20px] px-[10px]">
+      <div className="p-5 px-[10px]">
         <form
           onSubmit={(e) => handleMessageSend(e)}
           className="flex gap-[10px]"
@@ -43,7 +43,7 @@ const ChatTab = () => {
           <input
             type="text"
             placeholder={`Message ${currentRecipient?.name || ''}`}
-            className="flex-1 rounded-full border-[8px] border-[#cfcfcf] px-[12px] py-[8px]"
+            className="flex-1 rounded-full border-[8px] border-grey px-3 py-2"
             value={currentMessage}
             onChange={(e) => setCurrentMessage(e.target.value)}
           />

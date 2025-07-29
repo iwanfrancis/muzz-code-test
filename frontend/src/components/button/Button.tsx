@@ -1,3 +1,5 @@
+import { cn } from '@/utils/cn'
+
 type ButtonProps = {
   onClick?: (...args: any[]) => void
   children: string
@@ -9,9 +11,10 @@ const Button = ({ onClick, children, buttonType, disabled }: ButtonProps) => {
   return (
     <button
       type={buttonType}
-      className={`border-0 rounded-lg bg-[#e8506e] text-white px-2.5 py-1.5 font-semibold cursor-pointer transition-colors duration-200 ease-in-out hover:bg-[#cc3d59] ${
-        disabled ? 'opacity-50 cursor-not-allowed hover:bg-[#e8506e]' : ''
-      }`}
+      className={cn(
+        'border-0 rounded-lg bg-pink text-white px-2.5 py-1.5 font-semibold cursor-pointer transition-colors duration-200 ease-in-out hover:bg-dark-pink',
+        { 'opacity-50 cursor-not-allowed hover:bg-pink': disabled }
+      )}
       onClick={onClick}
       disabled={disabled}
     >

@@ -1,3 +1,5 @@
+import { cn } from '@/utils/cn'
+
 type Tab<T extends string> = {
   id: T
   label: string
@@ -20,9 +22,10 @@ const Tabs = <T extends string>({
         <li
           key={tab.id}
           onClick={() => onTabChange(tab.id)}
-          className={`flex-1 text-center cursor-pointer font-semibold border-b-2 border-transparent py-1 transition-all duration-200 ease-in-out ${
-            activeTab === tab.id ? 'text-[#e8506e] border-[#e8506e]' : ''
-          }`}
+          className={cn(
+            'flex-1 text-center cursor-pointer font-semibold border-b-2 border-transparent py-1 transition-all duration-200 ease-in-out',
+            { 'text-pink border-pink': activeTab === tab.id }
+          )}
         >
           {tab.label}
         </li>

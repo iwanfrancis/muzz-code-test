@@ -6,7 +6,7 @@ type MessageProps = {
 
 const MessageItem = ({ message }: MessageProps) => {
   return (
-    <div className="rounded-lg px-[10px] py-[4px] text-sm bg-amber-50 m-[8px]">
+    <div className="rounded-lg px-[10px] py-1 text-sm bg-amber-50 m-2">
       {message.content}
     </div>
   )

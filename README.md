@@ -61,3 +61,13 @@ I installed prettier, configured it in the package.json and also added the eslin
 ### 6. Pre-commit hooks
 
 I decided to quickly setup some husky pre-commit hooks to run linting and code formatting upon commit. This ensures that a developer can't accidentally commit unformatted code if they don't have their IDE configured correctly to highlight and fix linting/formatting issues.
+
+### 7. Some styling tweaks
+
+I added a [util](/frontend/src/utils/cn.ts) to help with conditional tailwind classes. It also uses [tailwind-merge](https://www.npmjs.com/package/tailwind-merge) to avoid any conflicts if multiple classes affecting the same style are applied. It's only being used twice in the code at this stage, and with very minimal conditions. When the codebase begins to scale and components become more complex the original approach for conditional classes would become awkward to manage.
+
+Another library to consider as the pool of shared components increases is the [cva](https://cva.style/docs) library. I didn't implement it in this case as there are no components with variants, but it's incredibly useful for defining alternative styles for components that have lots of variants.
+
+I also created a couple of new colour variables in the global styles and applied those in the code. I found quite a lot of other arbitrary sizing classes around the codebase e.g. w-[8px]. For ones divisible by eight I switched out for the ootb tailwind classes. I left any non-divisble by eight as they were as I didn't want to tweak existing styles.
+
+Typically if you're using tailwind with the out of the box config and 4px grid you'll want your designs to align with that. It's fine to use arbitrary values occasionally for one off scenarios, but they are very messy.

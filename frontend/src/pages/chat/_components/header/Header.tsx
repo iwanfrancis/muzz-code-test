@@ -13,7 +13,7 @@ const Header = () => {
   }
 
   return (
-    <div className="flex justify-between p-[20px]">
+    <div className="flex justify-between p-5">
       <ChevronLeft
         onClick={() => setCurrentPage('home')}
         className="cursor-pointer"
