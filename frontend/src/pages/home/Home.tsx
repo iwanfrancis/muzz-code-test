@@ -1,7 +1,7 @@
 import useUserStore from '@/store/user.store.ts'
 import UserCard from '@/components/data-display/user-card/UserCard.tsx'
 import Logo from '@/assets/logo.svg'
-import UserList from './user-list/UserList.tsx'
+import UserList from '@/features/user-management/components/user-list/UserList'
 
 const Home = () => {
   const currentUser = useUserStore((state) => state.currentUser)
