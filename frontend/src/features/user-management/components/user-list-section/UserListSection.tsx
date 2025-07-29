@@ -1,6 +1,6 @@
 import UserCard from '@/components/data-display/user-card/UserCard'
 import Button from '@/components/inputs/button/Button'
-import type { User } from '../../types/user.types'
+import type { User } from '@/types'
 
 interface UserListSectionProps {
   title: string

@@ -1,18 +1,5 @@
+import type { Message, MessageInput } from '@/types'
 import { create } from 'zustand'
-
-export type Message = {
-  id: number
-  senderId: number
-  recipientId: number
-  content: string
-  timestamp: string
-}
-
-export type MessageInput = {
-  senderId: number
-  recipientId: number
-  content: string
-}
 
 type MessagesState = {
   messages: Message[]

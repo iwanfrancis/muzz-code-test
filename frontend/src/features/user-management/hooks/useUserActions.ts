@@ -1,6 +1,6 @@
-import useUserStore from '@/store/user.store'
 import usePageStore from '@/store/page.store'
-import type { User } from '../types/user.types'
+import useUserStore from '@/store/user.store'
+import type { User } from '@/types'
 
 export const useUserActions = () => {
   const setCurrentUser = useUserStore((state) => state.setCurrentUser)

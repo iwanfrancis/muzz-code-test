@@ -1,10 +1,5 @@
+import type { User } from '@/types'
 import { create } from 'zustand'
-
-export type User = {
-  id: number
-  name: string
-  profile: string
-}
 
 type UserState = {
   currentUser: User

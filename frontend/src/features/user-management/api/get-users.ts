@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import type { User } from '../types/user.types'
+import type { User } from '@/types'
 
 export const getUsers = async (): Promise<User[]> => {
   const response = await fetch('/api/user/all.json')

@@ -39,6 +39,7 @@ Before making any changes I spent some time familiarising with the codebase and 
 - Conditional tailwind classes being managed with ternaries.
 - All page interactions seem to result in full page rerender
 - "@typescript-eslint/no-explicit-any": "off" 😂 + various type safety issues.
+- Copy baked into components
 
 At this point I figured there was probably more to be found but that I had plenty to work on. I decided to prioritise the fixes based on how simple the improvement was vs how much value it'd provided. Gotta get the low hanging fruit!
 
@@ -102,3 +103,31 @@ This seemed like an appropriate moment to start setting up the testing infrastru
 I added tests for the existing shared components, but left the 'features' as is.
 
 Coverage is configured so you could begin to track code coverage as a metric. In a real project I would consider setting up some sort of quality gate that prevents the merging of branches into the codebase which do not meet a high enough coverage percentage.
+
+### 12. Extract features from routes
+
+This was a fairly big chunk of refactoring I wanted to do to make the project more scalable and maintainable. I seperated out code in the pages folder into a features folder instead. The folder structure follows the [bulletproof react](https://github.com/alan2207/bulletproof-react) structure.
+
+For now there are two features; chat and user-management. Each folder is broken down into subfolders to cover different functionality.
+
+```
+src/features/new-feature
+|
++-- api         # exported API request declarations and api hooks related to a specific feature
+|
++-- assets      # assets folder can contain all the static files for a specific feature
+|
++-- components  # components scoped to a specific feature
+|
++-- hooks       # hooks scoped to a specific feature
+|
++-- stores      # state stores for a specific feature
+|
++-- types       # typescript types used within the feature
+|
++-- utils       # utility functions for a specific feature
+```
+
+This approach keeps all ui/logic related to a feature in a single location, rather than hidden within the pages folder. It creates a layer between the stores and the components by introducing hooks which expose actions related to any given feature. It also introduces a network layer in the API folder.
+
+The UI has been broken down into smaller pieces. Making each component easier to digest, test and maintain.

@@ -1,13 +1,11 @@
 import { useState } from 'react'
-import useMessagesStore from '@/store/messages.store.ts'
-import useUserStore from '@/store/user.store.ts'
-import MessageItem from './_components/message/MessageItem.tsx'
+import { useChatActions, useChatData } from '../../hooks/useChat'
+import MessageItem from '../message-item/MessageItem'
 
-const ChatTab = () => {
+const MessageList = () => {
   const [currentMessage, setCurrentMessage] = useState('')
-  const currentUser = useUserStore((state) => state.currentUser)
-  const currentRecipient = useUserStore((state) => state.currentRecipient)
-  const messages = useMessagesStore((state) => state.messages)
+  const { messages, currentUser, currentRecipient } = useChatData()
+  const { sendMessage } = useChatActions()
 
   const handleMessageSend = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -19,9 +17,12 @@ const ChatTab = () => {
       content: currentMessage.trim(),
     }
 
-    console.log('Sending message:', newMessage)
-
+    sendMessage(newMessage)
     setCurrentMessage('')
+  }
+
+  if (!currentRecipient) {
+    return <div>No recipient selected</div>
   }
 
   return (
@@ -42,7 +43,7 @@ const ChatTab = () => {
         >
           <input
             type="text"
-            placeholder={`Message ${currentRecipient?.name || ''}`}
+            placeholder={`Message ${currentRecipient.name}`}
             className="flex-1 rounded-full border-[8px] border-grey px-3 py-2"
             value={currentMessage}
             onChange={(e) => setCurrentMessage(e.target.value)}
@@ -53,4 +54,4 @@ const ChatTab = () => {
   )
 }
 
-export default ChatTab
+export default MessageList

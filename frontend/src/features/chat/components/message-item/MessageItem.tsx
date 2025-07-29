@@ -1,10 +1,10 @@
-import type { Message } from '@/store/messages.store.ts'
+import type { Message } from '@/types'
 
-type MessageProps = {
+interface MessageItemProps {
   message: Message
 }
 
-const MessageItem = ({ message }: MessageProps) => {
+const MessageItem = ({ message }: MessageItemProps) => {
   return (
     <div className="rounded-lg px-[10px] py-1 text-sm bg-amber-50 m-2">
       {message.content}
