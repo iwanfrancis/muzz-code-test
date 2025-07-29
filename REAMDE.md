@@ -39,3 +39,15 @@ Before making any changes I spent some time familiarising with the codebase and 
 - Conditional tailwind classes being managed with ternaries.
 - All page interactions seem to result in full page rerender
 - "@typescript-eslint/no-explicit-any": "off" 😂 + various type safety issues.
+
+At this point I figured there was probably more to be found but that I had plenty to work on. I decided to prioritise the fixes based on how simple the improvement was vs how much value it'd provided. Gotta get the low hanging fruit!
+
+### 4. Add import alias
+
+I am aware that there is debate around whether aliasing is actually best practice or not. I'm not going to write an essay on it, but ultimately I think it looks tidier and makes it harder to run into import path issues. I updated the tsconfig and vite config to support the alias and then used copilot to update the paths around the codebase.
+
+Without any tests in place I had no way to programatically check that I hadn't broken anything. At this point I considered whether it was worth writing some baseline tests to enable this, but actually decided against it as the out of the box functionality is so basic that it only takes a couple of seconds to check that the app is running fine manually.
+
+I wasn't totally sure at this point exactly how many changes I'd have time to make and so didn't want to risk writing tests and then having to rewrite after reworking things.
+
+If this were a larger scale project I would **absolutely** consider boulstering the test infrastructure as a top priority **before** making siginificant structural changes to the codebase.

@@ -6,4 +6,9 @@ import { analyzer } from "vite-bundle-analyzer";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss(), analyzer()],
+  resolve: {
+    alias: {
+      "@": "/src",
+    },
+  },
 });

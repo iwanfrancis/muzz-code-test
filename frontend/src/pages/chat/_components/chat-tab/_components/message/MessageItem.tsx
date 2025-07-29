@@ -1,4 +1,4 @@
-import type { Message } from "../../../../../../store/messages.store.ts";
+import type { Message } from "@/store/messages.store.ts";
 
 type MessageProps = {
   message: Message;
