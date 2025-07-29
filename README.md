@@ -57,3 +57,7 @@ If this were a larger scale project I would **absolutely** consider boulstering 
 Another low hanging fruit. A code formatter ensures code consistency and readability as the project scales. It is opinionated, which removes the decision making time from formatting decisions.
 
 I installed prettier, configured it in the package.json and also added the eslint plugin to ensure that there are no conflicting rules. I ran the formatter on all files to make sure that existing code was made consistent.
+
+### 6. Pre-commit hooks
+
+I decided to quickly setup some husky pre-commit hooks to run linting and code formatting upon commit. This ensures that a developer can't accidentally commit unformatted code if they don't have their IDE configured correctly to highlight and fix linting/formatting issues.
