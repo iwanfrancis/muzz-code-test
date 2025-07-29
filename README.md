@@ -131,3 +131,7 @@ src/features/new-feature
 This approach keeps all ui/logic related to a feature in a single location, rather than hidden within the pages folder. It creates a layer between the stores and the components by introducing hooks which expose actions related to any given feature. It also introduces a network layer in the API folder.
 
 The UI has been broken down into smaller pieces. Making each component easier to digest, test and maintain.
+
+### 13. Move query client init out of render function
+
+React Query client shouldn't be initialised within a render function, else it's recreated on each render of the root component. This results in uneccessary refetches!

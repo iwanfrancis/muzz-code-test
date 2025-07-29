@@ -6,8 +6,9 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import './App.css'
 import usePageStore from './store/page.store'
 
+const queryClient = new QueryClient()
+
 function App() {
-  const queryClient = new QueryClient()
   const page = usePageStore((state) => state.currentPage)
 
   return (
