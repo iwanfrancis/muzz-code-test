@@ -6,7 +6,7 @@ import tseslint from 'typescript-eslint'
 import eslintConfigPrettier from 'eslint-config-prettier/flat'
 import jsxA11y from 'eslint-plugin-jsx-a11y'
 import sonarjs from 'eslint-plugin-sonarjs'
-import jest from 'eslint-plugin-jest'
+import vitest from 'eslint-plugin-vitest'
 import testingLibrary from 'eslint-plugin-testing-library'
 
 export default tseslint.config(
@@ -27,15 +27,43 @@ export default tseslint.config(
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
-      jest: jest,
       'jsx-a11y': jsxA11y,
+      vitest,
     },
     rules: {
+      ...vitest.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
       ],
+      // Prevent direct imports from @testing-library/react in test files
+      'no-restricted-imports': [
+        'error',
+        {
+          paths: [
+            {
+              name: '@testing-library/react',
+              message:
+                'Import from @/test/test-utils instead to use our custom render with providers.',
+            },
+            {
+              name: '@testing-library/user-event',
+              message:
+                'Import from @/test/test-utils instead - user is already set up in the render function.',
+            },
+          ],
+        },
+      ],
+      'testing-library/no-node-access': 'off',
+      'testing-library/no-container': 'off',
+    },
+  },
+  // Override for test-utils.tsx - allow testing-library imports
+  {
+    files: ['**/testing/test-utils.tsx'],
+    rules: {
+      'no-restricted-imports': 'off',
     },
   }
 )
