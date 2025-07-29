@@ -1,5 +1,5 @@
 import useUserStore from '@/store/user.store.ts'
-import UserCard from '@/components/user-card/UserCard.tsx'
+import UserCard from '@/components/data-display/user-card/UserCard'
 
 const ProfileTab = () => {
   const currentRecipient = useUserStore((state) => state.currentRecipient)

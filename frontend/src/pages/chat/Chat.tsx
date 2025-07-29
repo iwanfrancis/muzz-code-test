@@ -2,7 +2,7 @@ import Header from './_components/header/Header.tsx'
 import { useState } from 'react'
 import ChatTab from './_components/chat-tab/ChatTab.tsx'
 import ProfileTab from './_components/profile-tab/ProfileTab.tsx'
-import Tabs from '@/components/tabs/Tabs.tsx'
+import Tabs from '@/components/navigation/tabs/Tabs.tsx'
 
 type TabId = 'chat' | 'profile'
 

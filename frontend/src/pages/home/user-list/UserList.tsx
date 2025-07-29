@@ -1,5 +1,5 @@
-import UserCard from '@/components/user-card/UserCard.tsx'
-import Button from '@/components/button/Button.tsx'
+import UserCard from '@/components/data-display/user-card/UserCard'
+import Button from '@/components/inputs/button/Button'
 import { useQuery } from '@tanstack/react-query'
 import useUserStore, { type User } from '@/store/user.store.ts'
 import usePageStore from '@/store/page.store.ts'

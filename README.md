@@ -71,3 +71,9 @@ Another library to consider as the pool of shared components increases is the [c
 I also created a couple of new colour variables in the global styles and applied those in the code. I found quite a lot of other arbitrary sizing classes around the codebase e.g. w-[8px]. For ones divisible by eight I switched out for the ootb tailwind classes. I left any non-divisble by eight as they were as I didn't want to tweak existing styles.
 
 Typically if you're using tailwind with the out of the box config and 4px grid you'll want your designs to align with that. It's fine to use arbitrary values occasionally for one off scenarios, but they are very messy.
+
+### 8. Shared components folder structure
+
+Whilst fine early in the project, having all shared components sitting under one folder could become confusing and difficult to manage in time. I added another layer of categorisation to the folder to break it up a little.
+
+For shared components I usually look to the well established component libraries for folder structure inspiration. In this case I ripped off the categorisation that [MUI](https://mui.com/material-ui/all-components/) uses. e.g. inputs, feedback, layout, data display, navigation etc.

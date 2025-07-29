@@ -1,5 +1,5 @@
 import { ChevronLeft, Ellipsis } from 'lucide-react'
-import UserCard from '@/components/user-card/UserCard.tsx'
+import UserCard from '@/components/data-display/user-card/UserCard'
 import usePageStore from '@/store/page.store.ts'
 import useUserStore from '@/store/user.store.ts'
 
