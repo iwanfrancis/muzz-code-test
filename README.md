@@ -77,3 +77,20 @@ Typically if you're using tailwind with the out of the box config and 4px grid y
 Whilst fine early in the project, having all shared components sitting under one folder could become confusing and difficult to manage in time. I added another layer of categorisation to the folder to break it up a little.
 
 For shared components I usually look to the well established component libraries for folder structure inspiration. In this case I ripped off the categorisation that [MUI](https://mui.com/material-ui/all-components/) uses. e.g. inputs, feedback, layout, data display, navigation etc.
+
+### 9. ESLint config
+
+I re-enabled the `@typescript-eslint/no-explicit-any` rule and added a couple more linting plugins for better code quality. I never ever like using `any` unless I have literally no other choice.
+
+- jsx-a11y: Highlight issues related to accessibility
+- sonarjs: This is spots code smells, security issues, performance issues etc.
+- jest: This'll be handy soon when there are actually tests!
+- testing-library: Same for this one. Linting rules unique to react testing library
+
+I also wanted to add the tailwind eslint plugin but realised that they don't have stable support for tailwind v4, which is installed on the project so I opted not to.
+
+### 10. Make `Button` component more generic
+
+The Button component was using an `any` type and so I decided to fix that up along with the ESLint changes. The component is basically just a wrapper for an ootb HTML element so I decided to just extend the default html element props. This gives the component much more flexibility to be used in different scenarios without having to continually tweak the component.
+
+I also added a forwardRef so that a ref can be passed to the inner button element.

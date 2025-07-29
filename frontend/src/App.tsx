@@ -1,6 +1,6 @@
-import Container from '@/components/container/Container.tsx'
 import Chat from '@/pages/chat/Chat.tsx'
 import Home from '@/pages/home/Home.tsx'
+import Container from '@/components/layout/container/Container'
 import usePageStore from '@/store/page.store.ts'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 

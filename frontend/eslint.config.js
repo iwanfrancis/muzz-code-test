@@ -4,6 +4,10 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
 import eslintConfigPrettier from 'eslint-config-prettier/flat'
+import jsxA11y from 'eslint-plugin-jsx-a11y'
+import sonarjs from 'eslint-plugin-sonarjs'
+import jest from 'eslint-plugin-jest'
+import testingLibrary from 'eslint-plugin-testing-library'
 
 export default tseslint.config(
   { ignores: ['dist'] },
@@ -11,6 +15,8 @@ export default tseslint.config(
     extends: [
       js.configs.recommended,
       ...tseslint.configs.recommended,
+      sonarjs.configs.recommended,
+      testingLibrary.configs['flat/dom'],
       eslintConfigPrettier,
     ],
     files: ['**/*.{ts,tsx}'],
@@ -21,10 +27,11 @@ export default tseslint.config(
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
+      jest: jest,
+      'jsx-a11y': jsxA11y,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      '@typescript-eslint/no-explicit-any': 'off',
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
