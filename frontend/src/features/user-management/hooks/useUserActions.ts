@@ -1,11 +1,12 @@
-import usePageStore from '@/store/page.store'
+import { paths } from '@/config/paths'
 import useUserStore from '@/store/user.store'
 import type { User } from '@/types'
+import { useNavigate } from 'react-router'
 
 export const useUserActions = () => {
   const setCurrentUser = useUserStore((state) => state.setCurrentUser)
   const setCurrentRecipient = useUserStore((state) => state.setCurrentRecipient)
-  const setCurrentPage = usePageStore((state) => state.setCurrentPage)
+  const navigate = useNavigate()
 
   const switchUser = (user: User) => {
     setCurrentUser(user)
@@ -14,7 +15,7 @@ export const useUserActions = () => {
 
   const messageUser = (user: User) => {
     setCurrentRecipient(user)
-    setCurrentPage('chat')
+    navigate(paths.chat.getHref())
   }
 
   return {

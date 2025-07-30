@@ -1,18 +1,19 @@
+import { paths } from '@/config/paths'
 import useMessagesStore from '@/store/messages.store'
-import usePageStore from '@/store/page.store'
 import useUserStore from '@/store/user.store'
 import type { MessageInput } from '@/types'
+import { useNavigate } from 'react-router'
 
 export const useChatActions = () => {
   const createMessage = useMessagesStore((state) => state.createMessage)
-  const setCurrentPage = usePageStore((state) => state.setCurrentPage)
+  const navigate = useNavigate()
 
   const sendMessage = (messageInput: MessageInput) => {
     createMessage(messageInput)
   }
 
   const navigateHome = () => {
-    setCurrentPage('home')
+    navigate(paths.home.getHref())
   }
 
   return {

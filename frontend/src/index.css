@@ -5,3 +5,12 @@
   --color-dark-pink: #cc3d59;
   --color-grey: #cfcfcf;
 }
+
+#root {
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}

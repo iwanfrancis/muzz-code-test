@@ -132,6 +132,16 @@ This approach keeps all ui/logic related to a feature in a single location, rath
 
 The UI has been broken down into smaller pieces. Making each component easier to digest, test and maintain.
 
-### 13. Move query client init out of render function
+### 13. Move query client into state
 
-React Query client shouldn't be initialised within a render function, else it's recreated on each render of the root component. This results in uneccessary refetches!
+React Query client should be initialised in state, else it's recreated on each render of the root component. This results in uneccessary refetches!
+
+### 14. Add a router
+
+I found the global state based router pattern a little confusing. It's not a pattern I'm familiar with and on the surface it seems that there'd be a lot of downsides, particularly in relation to scalability.
+
+The obvious downside is that you lose all the benefits of having a url based route; being able to share links to part of the app, being able to use the history api, search params etc. Even if this was being opened in a web view in an app you would still get these benefits.
+
+I made the assumption that we would likely want to continue adding more pages to this app, on so decided to swap out this approach for a simple react-router implementation instead. Whilst doing this I also tidied up the structure of the src folder a bit and broke out the root component a bit.
+
+Doing this did introduce a bug where you can navigate directly to the chat page and get a broken screen because the current participant isn't selected. I think the correct solution to that problem would be to actually track the current recipient as a dynamic path e.g. pass the user id in the url. I'm going to push on for now though as I'm running short on time.
