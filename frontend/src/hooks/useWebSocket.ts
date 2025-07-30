@@ -47,7 +47,6 @@ export const useWebSocket = () => {
           socketService.onMessageReceived(handleMessageReceived)
           socketService.onMessagesHistory(handleMessagesHistory)
           socketService.onUsersUpdated(handleUsersUpdated)
-          socketService.onUserTyping(handleUserTyping)
           eventListenersSetRef.current = true
         }
       } catch (error) {
@@ -63,7 +62,6 @@ export const useWebSocket = () => {
         socketService.offMessageReceived()
         socketService.offMessagesHistory()
         socketService.offUsersUpdated()
-        socketService.offUserTyping()
         eventListenersSetRef.current = false
       }
       socketService.disconnect()
@@ -80,6 +78,5 @@ export const useWebSocket = () => {
   return {
     isConnected: socketService.isConnected(),
     sendMessage: socketService.sendMessage.bind(socketService),
-    emitTyping: socketService.emitTyping.bind(socketService),
   }
 }

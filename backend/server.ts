@@ -94,22 +94,6 @@ io.on("connection", (socket) => {
     );
   });
 
-  // Handle user typing
-  socket.on(
-    "user:typing",
-    (data: { userId: number; recipientId: number; isTyping: boolean }) => {
-      const recipient = Array.from(connectedUsers.values()).find(
-        (user) => user.id === data.recipientId
-      );
-      if (recipient) {
-        socket.to(recipient.socketId).emit("user:typing", {
-          userId: data.userId,
-          isTyping: data.isTyping,
-        });
-      }
-    }
-  );
-
   // Handle disconnection
   socket.on("disconnect", () => {
     console.log("User disconnected:", socket.id);

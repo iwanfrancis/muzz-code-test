@@ -153,3 +153,7 @@ This seemed like an appropriate moment to add tests for the features. I used AI 
 ### 16. Get the chat working
 
 I wanted to implement the sockets out of the box rather than doing it store only at first. For the sake of speed I relied on AI for a lot of the boilerplate stuff including the backend side of things.
+
+### 17. Improved chat styling
+
+I spent some time tidying up the styles a bit and implementing the logic for timestamps and chat bubble grouping.

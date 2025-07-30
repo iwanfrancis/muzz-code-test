@@ -50,11 +50,6 @@ class SocketService {
     this.socket?.emit('message:send', messageInput)
   }
 
-  // Typing indicators
-  emitTyping(userId: number, recipientId: number, isTyping: boolean) {
-    this.socket?.emit('user:typing', { userId, recipientId, isTyping })
-  }
-
   // Event listeners
   onMessageReceived(callback: (message: Message) => void) {
     this.socket?.on('message:received', callback)
@@ -85,10 +80,6 @@ class SocketService {
 
   offUsersUpdated() {
     this.socket?.off('users:updated')
-  }
-
-  offUserTyping() {
-    this.socket?.off('user:typing')
   }
 
   isConnected(): boolean {

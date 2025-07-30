@@ -23,14 +23,14 @@ const mockChatData = {
       senderId: 1,
       recipientId: 2,
       content: 'Hello there!',
-      timestamp: '2024-01-01T12:00:00Z',
+      timestamp: '2025-01-01T12:00:00Z',
     },
     {
       id: 2,
       senderId: 2,
       recipientId: 1,
       content: 'Hi! How are you?',
-      timestamp: '2024-01-01T12:01:00Z',
+      timestamp: '2025-01-01T12:01:00Z',
     },
   ] as Message[],
 }
