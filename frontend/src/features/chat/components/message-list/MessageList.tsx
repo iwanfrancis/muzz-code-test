@@ -31,7 +31,11 @@ const MessageList = () => {
         <div className="mt-auto">
           {messages.map((message) => (
             <div key={message.timestamp}>
-              <MessageItem message={message} key={message.id} />
+              <MessageItem
+                currentUserId={currentUser.id}
+                message={message}
+                key={message.id}
+              />
             </div>
           ))}
         </div>

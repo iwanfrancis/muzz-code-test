@@ -3,13 +3,19 @@ import useMessagesStore from '@/store/messages.store'
 import useUserStore from '@/store/user.store'
 import type { MessageInput } from '@/types'
 import { useNavigate } from 'react-router'
+import { useWebSocket } from '@/hooks/useWebSocket'
 
 export const useChatActions = () => {
-  const createMessage = useMessagesStore((state) => state.createMessage)
   const navigate = useNavigate()
+  const { sendMessage: sendMessageSocket, isConnected } = useWebSocket()
 
   const sendMessage = (messageInput: MessageInput) => {
-    createMessage(messageInput)
+    if (isConnected) {
+      // Send via WebSocket
+      sendMessageSocket(messageInput)
+    } else {
+      throw new Error('WebSocket is not connected')
+    }
   }
 
   const navigateHome = () => {
@@ -19,6 +25,7 @@ export const useChatActions = () => {
   return {
     sendMessage,
     navigateHome,
+    isConnected,
   }
 }
 

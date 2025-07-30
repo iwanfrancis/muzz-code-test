@@ -4,6 +4,8 @@ import { create } from 'zustand'
 type MessagesState = {
   messages: Message[]
   createMessage: (message: MessageInput) => void
+  addMessage: (message: Message) => void
+  setMessages: (messages: Message[]) => void
 }
 
 const useMessagesStore = create<MessagesState>()((set) => ({
@@ -19,6 +21,16 @@ const useMessagesStore = create<MessagesState>()((set) => ({
       }
       return { messages: [...state.messages, newMessage] }
     }),
+  addMessage: (message: Message) =>
+    set((state) => {
+      // Check if message already exists to prevent duplicates
+      const existingMessage = state.messages.find((m) => m.id === message.id)
+      if (existingMessage) {
+        return state // Don't add duplicate
+      }
+      return { messages: [...state.messages, message] }
+    }),
+  setMessages: (messages: Message[]) => set({ messages }),
 }))
 
 export default useMessagesStore

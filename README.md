@@ -149,3 +149,7 @@ Doing this did introduce a bug where you can navigate directly to the chat page 
 ### 15. Add tests for features
 
 This seemed like an appropriate moment to add tests for the features. I used AI to help out with these a little bit. The mocking approach for the stores and api is a bit brute force. With more time I would typically use MSW for mocking the API layer. The Zustand docs also have some good content on setting up tests using stores.
+
+### 16. Get the chat working
+
+I wanted to implement the sockets out of the box rather than doing it store only at first. For the sake of speed I relied on AI for a lot of the boilerplate stuff including the backend side of things.
