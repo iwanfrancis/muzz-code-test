@@ -1,12 +1,9 @@
-import { paths } from '@/config/paths'
 import useMessagesStore from '@/store/messages.store'
 import useUserStore from '@/store/user.store'
 import type { MessageInput } from '@/types'
-import { useNavigate } from 'react-router'
 import { useWebSocket } from '@/hooks/useWebSocket'
 
 export const useChatActions = () => {
-  const navigate = useNavigate()
   const { sendMessage: sendMessageSocket, isConnected } = useWebSocket()
 
   const sendMessage = (messageInput: MessageInput) => {
@@ -18,13 +15,8 @@ export const useChatActions = () => {
     }
   }
 
-  const navigateHome = () => {
-    navigate(paths.home.getHref())
-  }
-
   return {
     sendMessage,
-    navigateHome,
     isConnected,
   }
 }
