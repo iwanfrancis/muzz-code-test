@@ -145,3 +145,7 @@ The obvious downside is that you lose all the benefits of having a url based rou
 I made the assumption that we would likely want to continue adding more pages to this app, on so decided to swap out this approach for a simple react-router implementation instead. Whilst doing this I also tidied up the structure of the src folder a bit and broke out the root component a bit.
 
 Doing this did introduce a bug where you can navigate directly to the chat page and get a broken screen because the current participant isn't selected. I think the correct solution to that problem would be to actually track the current recipient as a dynamic path e.g. pass the user id in the url. I'm going to push on for now though as I'm running short on time.
+
+### 15. Add tests for features
+
+This seemed like an appropriate moment to add tests for the features. I used AI to help out with these a little bit. The mocking approach for the stores and api is a bit brute force. With more time I would typically use MSW for mocking the API layer. The Zustand docs also have some good content on setting up tests using stores.
