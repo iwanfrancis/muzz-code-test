@@ -161,3 +161,29 @@ I spent some time tidying up the styles a bit and implementing the logic for tim
 ### 18. Tidy up
 
 At this point I was focused on getting this wrapped up. I focused on resolving issues I'd spotted, fixing bugs and getting sample messages ready for the app. I spent some time with the react debugger making sure that react wasn't doing an egrigious re-renders.
+
+### 19. E2E
+
+I really wanted to get some cypress E2E tests in but was super short on time at this point, so opted to see what I could get in place with some AI assistance. It did a decent enough job at coming up with some tests - I think it's a good demo of what sort of stuff you can achieve with them.
+
+## Improvements / Next Steps
+
+This task ended up taking a lot of time, so there's absolutely heaps of stuff that I'm not super happy with or would have done differently.
+
+- Error handling
+  - No 404s
+  - No handling of websocket errors
+- Loading states
+- Half baked routing
+  - I was really keen to swap out the weird store based routing but didn't see it through all the way
+  - The chat page should accept the recipient as a param and then load without needing to go via the home page
+- Copy baked into components
+  - As a next step I would have installed some i18n lib to allow us to track copy but then also as a future proofing to add extra locales further down the line
+- More unit tests
+  - Got decent test coverage with the vitest tests but not across all files
+- Virtualised list for chat messages + pagination
+  - Currently all the messages in history are rendered when you enter a chat, this obviously won't scale as the number of messages grows.
+  - You would need to paginate the messages being fetched and also virtualise the list so that they aren't all being rendered at once.
+- Message read receipts and typing indicators.
+  - I had a view of getting these implemented but opted not to based on time.
+  - It wouldn't be too bad to hack them in quick, but setting them up properly and testing would take longer.
