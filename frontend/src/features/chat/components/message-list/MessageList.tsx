@@ -8,6 +8,7 @@ import { TIME_BEFORE_CHAT_TIMESTAMP_MINUTES } from '@/config/chats'
 import { useNavigate } from 'react-router'
 import { paths } from '@/config/paths'
 import ChatInput from '../chat-input/ChatInput'
+import { isGroupedWithNextMessage } from '../../utils/message-grouping'
 
 const shouldShowTimestamp = (
   message: Message,
@@ -56,6 +57,7 @@ const MessageList = () => {
             const nextMessage =
               index < messages.length - 1 ? messages[index + 1] : null
             const showTimestamp = shouldShowTimestamp(message, previousMessage)
+            const isGrouped = isGroupedWithNextMessage(message, nextMessage)
 
             return (
               <Fragment key={message.id}>
@@ -69,8 +71,7 @@ const MessageList = () => {
                   key={message.id}
                   currentUserId={currentUser.id}
                   message={message}
-                  prevMessage={previousMessage}
-                  nextMessage={nextMessage}
+                  isGrouped={isGrouped}
                 />
               </Fragment>
             )

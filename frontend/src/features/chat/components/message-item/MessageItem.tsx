@@ -1,33 +1,17 @@
 import type { Message } from '@/types'
 import { cn } from '@/utils/cn'
-import { useMemo } from 'react'
-import {
-  isGroupedWithPreviousMessage,
-  isGroupedWithNextMessage,
-} from '../../utils/message-grouping'
 
 interface MessageItemProps {
   currentUserId: number
   message: Message
-  prevMessage: Message | null
-  nextMessage: Message | null
+  isGrouped?: boolean
 }
 
 const MessageItem = ({
   currentUserId,
   message,
-  prevMessage,
-  nextMessage,
+  isGrouped = false,
 }: MessageItemProps) => {
-  const isGroupedWithPrevious = useMemo(
-    () => isGroupedWithPreviousMessage(message, prevMessage),
-    [message, prevMessage]
-  )
-  const isGroupedWithNext = useMemo(
-    () => isGroupedWithNextMessage(message, nextMessage),
-    [message, nextMessage]
-  )
-
   const belongsToCurrentUser = message.senderId === currentUserId
 
   return (
@@ -37,10 +21,10 @@ const MessageItem = ({
         {
           'self-end bg-pink w-auto text-white': belongsToCurrentUser,
           'self-start bg-grey': !belongsToCurrentUser,
-          'rounded-br-none': belongsToCurrentUser && !isGroupedWithNext,
-          'rounded-bl-none': !belongsToCurrentUser && !isGroupedWithNext,
-          'mt-3': !isGroupedWithPrevious,
-          'mt-[1px]': isGroupedWithPrevious,
+          'rounded-br-none': belongsToCurrentUser && !isGrouped,
+          'rounded-bl-none': !belongsToCurrentUser && !isGrouped,
+          'mb-3': !isGrouped,
+          'mb-[1px]': isGrouped,
         }
       )}
     >
