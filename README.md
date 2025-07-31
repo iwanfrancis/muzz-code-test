@@ -157,3 +157,7 @@ I wanted to implement the sockets out of the box rather than doing it store only
 ### 17. Improved chat styling
 
 I spent some time tidying up the styles a bit and implementing the logic for timestamps and chat bubble grouping. Had the text input push to the bottom of the page etc.
+
+### 18. Tidy up
+
+At this point I was focused on getting this wrapped up. I focused on resolving issues I'd spotted, fixing bugs and getting sample messages ready for the app. I spent some time with the react debugger making sure that react wasn't doing an egrigious re-renders.

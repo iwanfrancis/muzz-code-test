@@ -38,6 +38,8 @@ const MessageList = () => {
   }, [messages])
 
   // Redirect to home if no recipient is selected
+  // This is a hack which I don't have time to resolve properly.
+  // We should be tracking recipient is path and then fetching them on page load.
   useEffect(() => {
     if (!currentRecipient) {
       navigate(paths.home.getHref())
