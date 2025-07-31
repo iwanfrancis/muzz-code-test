@@ -22,7 +22,9 @@ const Home = () => {
       <div className="p-6 flex-grow flex flex-col gap-6">
         <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
           <div className="flex items-center gap-3 mb-2">
-            <UserCard user={currentUser} />
+            <div data-testid="current-user">
+              <UserCard user={currentUser} />
+            </div>
             <div className="text-sm text-gray-500">Currently logged in as</div>
           </div>
         </div>

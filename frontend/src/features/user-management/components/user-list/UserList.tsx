@@ -2,11 +2,17 @@ import useUserStore from '@/store/user.store'
 import { useUsers } from '../../api/get-users'
 import { useUserActions } from '../../hooks/useUserActions'
 import UserListSection from '../user-list-section/UserListSection'
+import { useMemo } from 'react'
 
 const UserList = () => {
   const currentUser = useUserStore((state) => state.currentUser)
   const { data: users } = useUsers()
   const { switchUser, messageUser } = useUserActions()
+
+  const otherUsers = useMemo(
+    () => users?.filter((user) => user.id !== currentUser.id) || [],
+    [users, currentUser.id]
+  )
 
   if (!users) {
     return <div>Loading...</div>
@@ -26,7 +32,7 @@ const UserList = () => {
 
       <UserListSection
         title="Message Someone"
-        users={users}
+        users={otherUsers}
         currentUserId={currentUser.id}
         onUserAction={messageUser}
         actionLabel={() => 'Message'}

@@ -16,6 +16,7 @@ const MessageItem = ({
 
   return (
     <span
+      data-testid="message-item"
       className={cn(
         'rounded-xl px-[10px] p-2 text-sm leading-tight mx-2 min-w-8 max-w-64',
         {

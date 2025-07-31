@@ -5,7 +5,10 @@ const ProfileTab = () => {
   const { currentRecipient } = useChatData()
 
   return (
-    <div className="text-center py-7 flex flex-col gap-4">
+    <div
+      className="text-center py-7 flex flex-col gap-4"
+      data-testid="profile-tab"
+    >
       {currentRecipient && <UserCard user={currentRecipient} />}
       <p>This tab is a placeholder - no improvements are needed.</p>
     </div>

@@ -22,7 +22,7 @@ const ChatInput = () => {
   }
 
   return (
-    <div className="p-5 px-[10px]">
+    <div className="p-5 px-[10px]" data-testid="chat-input">
       <form onSubmit={(e) => handleMessageSend(e)} className="flex gap-[10px]">
         <input
           type="text"

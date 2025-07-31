@@ -23,13 +23,15 @@ const ChatTimestamp = ({ timestamp }: MessageItemProps) => {
 
   if (isFuture(date)) {
     return (
-      <span className={classNames}>{format(date, 'yyyy-MM-dd HH:mm')}</span>
+      <span className={classNames} data-testid="message-timestamp">
+        {format(date, 'yyyy-MM-dd HH:mm')}
+      </span>
     )
   }
 
   if (isToday(date)) {
     return (
-      <span className={classNames}>
+      <span className={classNames} data-testid="message-timestamp">
         <strong>Today</strong> {format(date, 'HH:mm')}
       </span>
     )
@@ -37,21 +39,33 @@ const ChatTimestamp = ({ timestamp }: MessageItemProps) => {
 
   if (isYesterday(date)) {
     return (
-      <span className={classNames}>
+      <span className={classNames} data-testid="message-timestamp">
         <strong>Yesterday</strong> {format(date, 'HH:mm')}
       </span>
     )
   }
 
   if (isThisWeek(date)) {
-    return <span className={classNames}>{format(date, 'EEEE HH:mm')}</span>
+    return (
+      <span className={classNames} data-testid="message-timestamp">
+        {format(date, 'EEEE HH:mm')}
+      </span>
+    )
   }
 
   if (isThisYear(date)) {
-    return <span className={classNames}>{format(date, 'MMM dd HH:mm')}</span>
+    return (
+      <span className={classNames} data-testid="message-timestamp">
+        {format(date, 'MMM dd HH:mm')}
+      </span>
+    )
   }
 
-  return <span className={classNames}>{format(date, 'yyyy-MM-dd HH:mm')}</span>
+  return (
+    <span className={classNames} data-testid="message-timestamp">
+      {format(date, 'yyyy-MM-dd HH:mm')}
+    </span>
+  )
 }
 
 export default ChatTimestamp

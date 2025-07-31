@@ -26,6 +26,9 @@ const Tabs = <T extends string>({
             'flex-1 text-center cursor-pointer font-semibold border-b-2 border-transparent py-1 transition-all duration-200 ease-in-out',
             { 'text-pink border-pink': activeTab === tab.id }
           )}
+          data-testid="tab"
+          role="tab"
+          aria-selected={activeTab === tab.id}
         >
           {tab.label}
         </li>

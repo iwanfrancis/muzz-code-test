@@ -51,7 +51,10 @@ const MessageList = () => {
   }
 
   return (
-    <div className="flex-1 flex flex-col overflow-hidden">
+    <div
+      className="flex-1 flex flex-col overflow-hidden"
+      data-testid="message-list"
+    >
       <div className="flex-1 overflow-auto p-[5px] flex-col" ref={scrollRef}>
         <div className="mt-auto flex flex-col">
           {messages.map((message, index) => {

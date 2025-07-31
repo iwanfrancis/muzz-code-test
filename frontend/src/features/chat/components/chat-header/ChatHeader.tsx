@@ -11,11 +11,12 @@ const ChatHeader = () => {
   }
 
   return (
-    <div className="flex justify-between p-5">
+    <div className="flex justify-between p-5" data-testid="chat-header">
       <Link
         to={paths.home.getHref()}
         className="flex items-center"
         aria-label="Back to home"
+        data-testid="back-button"
       >
         <ChevronLeft className="cursor-pointer" />
       </Link>
