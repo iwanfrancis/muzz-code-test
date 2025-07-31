@@ -156,4 +156,4 @@ I wanted to implement the sockets out of the box rather than doing it store only
 
 ### 17. Improved chat styling
 
-I spent some time tidying up the styles a bit and implementing the logic for timestamps and chat bubble grouping.
+I spent some time tidying up the styles a bit and implementing the logic for timestamps and chat bubble grouping. Had the text input push to the bottom of the page etc.

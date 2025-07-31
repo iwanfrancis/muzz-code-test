@@ -15,13 +15,11 @@ const ChatInterface = () => {
   const [activeTab, setActiveTab] = useState<TabId>('chat')
 
   return (
-    <div className="flex flex-col h-screen w-full overflow-hidden">
+    <div className="flex flex-col h-screen max-h-screen w-full overflow-hidden">
       <ChatHeader />
       <Tabs tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />
-      <div className="flex-1 flex flex-col">
-        {activeTab === 'chat' && <ChatTab />}
-        {activeTab === 'profile' && <ProfileTab />}
-      </div>
+      {activeTab === 'chat' && <ChatTab />}
+      {activeTab === 'profile' && <ProfileTab />}
     </div>
   )
 }

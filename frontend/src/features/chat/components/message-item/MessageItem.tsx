@@ -33,7 +33,7 @@ const MessageItem = ({
   return (
     <span
       className={cn(
-        'rounded-xl px-[10px] p-2 text-sm leading-none mx-2 min-w-8 max-w-64',
+        'rounded-xl px-[10px] p-2 text-sm leading-tight mx-2 min-w-8 max-w-64',
         {
           'self-end bg-pink w-auto text-white': belongsToCurrentUser,
           'self-start bg-grey': !belongsToCurrentUser,

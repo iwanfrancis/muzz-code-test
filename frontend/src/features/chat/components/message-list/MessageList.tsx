@@ -1,10 +1,13 @@
-import { useState, useEffect, useRef } from 'react'
-import { useChatActions, useChatData } from '../../hooks/useChat'
+import { useEffect, useRef } from 'react'
+import { useChatData } from '../../hooks/useChat'
 import MessageItem from '../message-item/MessageItem'
 import { differenceInMinutes } from 'date-fns'
 import type { Message } from '@/types'
 import ChatTimestamp from '../chat-timestamp/ChatTimestamp'
 import { TIME_BEFORE_CHAT_TIMESTAMP_MINUTES } from '@/config/chats'
+import { useNavigate } from 'react-router'
+import { paths } from '@/config/paths'
+import ChatInput from '../chat-input/ChatInput'
 
 const shouldShowTimestamp = (
   message: Message,
@@ -22,10 +25,9 @@ const shouldShowTimestamp = (
 }
 
 const MessageList = () => {
-  const [currentMessage, setCurrentMessage] = useState('')
   const { messages, currentUser, currentRecipient } = useChatData()
-  const { sendMessage } = useChatActions()
   const scrollRef = useRef<HTMLDivElement>(null)
+  const navigate = useNavigate()
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
@@ -34,30 +36,20 @@ const MessageList = () => {
     }
   }, [messages])
 
-  const handleMessageSend = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    if (!currentRecipient || !currentMessage.trim()) return
-
-    const newMessage = {
-      senderId: currentUser.id,
-      recipientId: currentRecipient.id,
-      content: currentMessage.trim(),
+  // Redirect to home if no recipient is selected
+  useEffect(() => {
+    if (!currentRecipient) {
+      navigate(paths.home.getHref())
     }
-
-    sendMessage(newMessage)
-    setCurrentMessage('')
-  }
+  }, [currentRecipient, navigate])
 
   if (!currentRecipient) {
-    return <div>No recipient selected</div>
+    return null // Will redirect via useEffect
   }
 
   return (
-    <div className="flex-1 flex flex-col">
-      <div
-        className="flex-1 overflow-auto p-[5px] flex-col max-h-[490px]"
-        ref={scrollRef}
-      >
+    <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 overflow-auto p-[5px] flex-col" ref={scrollRef}>
         <div className="mt-auto flex flex-col">
           {messages.map((message, index) => {
             const previousMessage = index > 0 ? messages[index - 1] : null
@@ -81,20 +73,7 @@ const MessageList = () => {
           })}
         </div>
       </div>
-      <div className="p-5 px-[10px]">
-        <form
-          onSubmit={(e) => handleMessageSend(e)}
-          className="flex gap-[10px]"
-        >
-          <input
-            type="text"
-            placeholder={`Message ${currentRecipient.name}`}
-            className="flex-1 rounded-full border-[8px] border-grey px-3 py-2"
-            value={currentMessage}
-            onChange={(e) => setCurrentMessage(e.target.value)}
-          />
-        </form>
-      </div>
+      <ChatInput />
     </div>
   )
 }
