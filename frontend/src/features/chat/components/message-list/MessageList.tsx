@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { Fragment, useEffect, useRef } from 'react'
 import { useChatData } from '../../hooks/useChat'
 import MessageItem from '../message-item/MessageItem'
 import { differenceInMinutes } from 'date-fns'
@@ -58,17 +58,21 @@ const MessageList = () => {
             const showTimestamp = shouldShowTimestamp(message, previousMessage)
 
             return (
-              <>
+              <Fragment key={message.id}>
                 {showTimestamp && (
-                  <ChatTimestamp timestamp={message.timestamp} />
+                  <ChatTimestamp
+                    timestamp={message.timestamp}
+                    key={message.timestamp}
+                  />
                 )}
                 <MessageItem
+                  key={message.id}
                   currentUserId={currentUser.id}
                   message={message}
                   prevMessage={previousMessage}
                   nextMessage={nextMessage}
                 />
-              </>
+              </Fragment>
             )
           })}
         </div>
