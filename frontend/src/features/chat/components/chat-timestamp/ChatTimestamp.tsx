@@ -12,7 +12,7 @@ type MessageItemProps = {
   timestamp: string
 }
 
-const classNames = 'text-xs text-gray-500 text-center block mt-4'
+const classNames = 'text-xs text-gray-500 text-center block my-4'
 
 const ChatTimestamp = ({ timestamp }: MessageItemProps) => {
   const date = useMemo(() => new Date(timestamp), [timestamp])

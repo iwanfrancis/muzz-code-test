@@ -3,6 +3,7 @@ import http from "http";
 import { Server } from "socket.io";
 import cors from "cors";
 import bodyParser from "body-parser";
+import { sampleMessages } from "./sample-message";
 
 const app = express();
 const server = http.createServer(app);
@@ -41,8 +42,8 @@ interface MessageInput {
 
 // In-memory storage (in production, use a database)
 const connectedUsers = new Map<number, User>();
-const messages: Message[] = [];
-let messageIdCounter = 1;
+const messages: Message[] = [...sampleMessages];
+let messageIdCounter = sampleMessages.length + 1; // Start from the next ID after sample messages
 
 // Socket.IO connection handling
 io.on("connection", (socket) => {
